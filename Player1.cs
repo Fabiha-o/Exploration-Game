@@ -31,8 +31,6 @@ public class Player1 : MonoBehaviour
     void Update()
     {
         //Game Logic
-        
-        
     }
 
     void Awake()
@@ -42,7 +40,26 @@ public class Player1 : MonoBehaviour
 
     void FixedUpdate()
     {
-        //Physics realted code
+        //Health Bar
+        if (playerHealth <= 20)
+        {
+            Debug.Log("Death is near");
+        }
+        else
+        {
+            Debug.Log("Almost past the forest");
+        }
+
+        if (playerHealth == 0)
+        {
+            
+        }
+        else
+        {
+            
+        }
+
+        //Physics
 
     }
 }
