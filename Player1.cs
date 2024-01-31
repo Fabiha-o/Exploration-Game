@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player1 : MonoBehaviour
+public class Demo : MonoBehaviour
 {
     public int playerHealth;
     public Rigidbody2D rb;
+    public float moveSpeed;
+    public float xInput,yInput;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-         Debug.Log("Hello Outsider");
-       
-       
+        Debug.Log("Hello Outsider");
     }
 
     void UseVector2()
@@ -29,8 +29,11 @@ public class Player1 : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+
     {
-        //Game Logic
+        xInput = Input.GetAxis("Horizontal");
+        yInput = Input.GetAxis("Vertical");
+        transform.Translate(xInput*moveSpeed, yInput*moveSpeed,0);
     }
 
     void Awake()
@@ -41,7 +44,7 @@ public class Player1 : MonoBehaviour
     void FixedUpdate()
     {
         //Health Bar
-        if (playerHealth <= 20)
+         if (playerHealth <= 20)
         {
             Debug.Log("Death is near");
         }
@@ -49,17 +52,10 @@ public class Player1 : MonoBehaviour
         {
             Debug.Log("Almost past the forest");
         }
-
-        if (playerHealth == 0)
-        {
-            
-        }
-        else
-        {
-            
-        }
-
         //Physics
-
     }
-}
+    
+ }
+
+
+
