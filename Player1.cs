@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Demo : MonoBehaviour
+public class Player1 : MonoBehaviour
 {
     public int playerHealth;
     public Rigidbody2D rb;
     public float moveSpeed;
     public float xInput,yInput;
+    public Vector2 respawnPoint;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        Debug.Log("Hello Outsider");
     }
 
     void UseVector2()
@@ -27,6 +27,19 @@ public class Demo : MonoBehaviour
         Vector2 moveUp = Vector2.up;
    }
 
+   public void RespawnNow()
+   {
+        transform.position = respawnPoint;
+   }
+
+   private void OnCollisionEnter2D(Collision2D collision)
+   {
+        if (collision.gameObject.tag == "Death")
+        {
+            RespawnNow();
+        }
+   }
+
     // Update is called once per frame
     void Update()
 
@@ -39,22 +52,31 @@ public class Demo : MonoBehaviour
     void Awake()
     {
         playerHealth = 100;
+        //Introduction Text
+        string[] intro = {"Oh! Hello outsider","I have been longing to meet with my family for awhile", "I actually ran away from home to become a traveler, but thankfully my sister found me and convinced me to go back", "I'm heading there right now, but it seems like the forest around my home changed a lot"};
+        for (int i = 0; i < intro.Length; i++)
+        {
+            Debug.Log(intro[i]);
+        }
     }
+    
+    
 
     void FixedUpdate()
     {
-        //Health Bar
+       /* //Health Bar
          if (playerHealth <= 20)
         {
             Debug.Log("Death is near");
         }
         else
         {
-            Debug.Log("Almost past the forest");
+            Debug.Log("Use arrow keys to move");
         }
         //Physics
+          */
     }
-    
+  
  }
 
 
