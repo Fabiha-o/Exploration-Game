@@ -9,6 +9,7 @@ public class Player1 : MonoBehaviour
     public float moveSpeed;
     public float xInput,yInput;
     public Vector2 respawnPoint;
+    public bool beginingofthegame = false; 
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,19 @@ public class Player1 : MonoBehaviour
     void UseVector2()
    {
         Vector2 position = new Vector2(3.0f,2.0f);
+   }
+   void array(){
+         //Introduction Text
+         if  (beginingofthegame == false){
+            string[] intro = {"Oh! Hello outsider","I have been longing to meet with my family for awhile", "I actually ran away from home to become a traveler, but thankfully my sister found me and convinced me to go back", "I'm heading there right now, but it seems like the forest around my home changed a lot, can you help?"};
+            for (int i = 0; i < intro.Length; i++)
+            {
+                Debug.Log(intro[i]);
+            }
+        
+             }
+             beginingofthegame = true; 
+        
    }
 
    void UseStaticProperties()
@@ -52,8 +66,9 @@ public class Player1 : MonoBehaviour
     void Awake()
     {
         playerHealth = 100;
+        array();
         //Introduction Text
-        string[] intro = {"Oh! Hello outsider","I have been longing to meet with my family for awhile", "I actually ran away from home to become a traveler, but thankfully my sister found me and convinced me to go back", "I'm heading there right now, but it seems like the forest around my home changed a lot"};
+        string[] intro = {"Oh! Hello outsider", "I actually ran away from home to become a traveler, but thankfully my sister found me and convinced me to go back","I have been longing to meet with my family for awhile", "I'm heading there right now, but it seems like the forest around my home changed a lot, can you help?"};
         for (int i = 0; i < intro.Length; i++)
         {
             Debug.Log(intro[i]);
@@ -78,6 +93,3 @@ public class Player1 : MonoBehaviour
     }
   
  }
-
-
-
