@@ -5,15 +5,15 @@ using UnityEngine;
 public class Checkpoint : MonoBehaviour
 {
 
-    private PlayerRespawn playerRespawn;
+    private Player1 playerRespawn;
 
     // Start is called before the first frame update
     void Start()
-    {
-        playerRespawn = GameObject.Find("Player1").GetComponent<PlayerRespawn>();
+    { 
+        playerRespawn = GameObject.Find("Player1").GetComponent<Player1>();
     }
 
-   private OnTriggerEnter2D(Collider2D collision)
+   private void OnTriggerEnter2D(Collider2D collision)
    {
         if (collision.gameObject.name == "Player1")
         {
