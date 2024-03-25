@@ -7,9 +7,9 @@ public class Player1 : MonoBehaviour
     public int playerHealth;
     public Rigidbody2D rb;
     public float moveSpeed;
-    public float xInput,yInput;
     public Vector2 respawnPoint;
     public bool beginingofthegame = false; 
+    public float jumpforce;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +23,7 @@ public class Player1 : MonoBehaviour
    void array(){
          //Introduction Text
          if  (beginingofthegame == false){
-            string[] intro = {"Oh! Hello outsider","I have been longing to meet with my family for awhile", "I actually ran away from home to become a traveler, but thankfully my sister found me and convinced me to go back", "I'm heading there right now, but it seems like the forest around my home changed a lot, can you help?"};
+            string[] intro = {"Oh! Hello outsider","It's great that you're here,","I have been longing to meet with my family for awhile", "I actually ran away from home to become a traveler, but thankfully my sister found me and convinced me to go back", "I'm heading there right now, but it seems like the forest around my home changed a lot, can you help?"};
             for (int i = 0; i < intro.Length; i++)
             {
                 Debug.Log(intro[i]);
@@ -58,9 +58,22 @@ public class Player1 : MonoBehaviour
     void Update()
 
     {
-        xInput = Input.GetAxis("Horizontal");
-        yInput = Input.GetAxis("Vertical");
-        transform.Translate(xInput*moveSpeed, yInput*moveSpeed,0);
+       //Movements
+        if ( Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.position += Vector3.left * moveSpeed * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            transform.position += Vector3.right * moveSpeed * Time.deltaTime;
+            
+        }
+        if(Input.GetKey(KeyCode.UpArrow)){
+            jump();
+        }
+    }
+    void jump(){
+        rb.velocity = new Vector2(rb.velocity.x,jumpforce);
     }
 
     void Awake()
@@ -68,7 +81,7 @@ public class Player1 : MonoBehaviour
         playerHealth = 100;
         array();
         //Introduction Text
-        string[] intro = {"Oh! Hello outsider", "I actually ran away from home to become a traveler, but thankfully my sister found me and convinced me to go back","I have been longing to meet with my family for awhile", "I'm heading there right now, but it seems like the forest around my home changed a lot, can you help?"};
+        string[] intro = {"Oh! Hello outsider","It's great that you're here,","I have been longing to meet with my family for awhile", "I actually ran away from home to become a traveler, but thankfully my sister found me and convinced me to go back", "I'm heading there right now, but it seems like the forest around my home changed a lot, can you help?"};
         for (int i = 0; i < intro.Length; i++)
         {
             Debug.Log(intro[i]);
